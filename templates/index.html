@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Калькулятор комиссии Steam</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://images.steamusercontent.com/ugc/945094122212850162/6AF50381B43F4EB62661DE2C17FCC70265238190/');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #1b2838;
+      color: #c7d5e0;
+      font-family: "Motiva Sans", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      padding: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .top-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .bottom-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .calculator {
+      background-color: #2a475e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input {
+      background-color: #1b2838;
+      color: #c7d5e0;
+    }
+
+    button {
+      background-color: #66c0f4;
+      color: #1b2838;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .results {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .results strong {
+      color: #a4d007;
+    }
+
+    .history {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .history-title {
+      font-weight: bold;
+      color: #66c0f4;
+      margin-bottom: 5px;
+    }
+
+    .charms-panel {
+      background-color: #2a475e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      color: #c7d5e0;
+      margin-top: 0;
+    }
+
+    .charms-panel h2 {
+      color: #66c0f4;
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .charms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 20px;
+    }
+
+    .charm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .charm img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    .charm-name {
+      font-size: 14px;
+      color: #66c0f4;
+      margin-bottom: 3px;
+    }
+
+    .charm-price {
+      color: #a4d007;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- Блок с брелками -->
+     <div class="charms-panel">
+      <h2>Цены на брелки CS2</h2>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSW0nRV-uj6J6cWF5LMhRZia6gKF5f0PLYP2wQtIzlktGNz6GnY7nUwD4FvpEo3b6ZpN6t3FewqEZoYjr2d4-VdgAgIQaH7w8lIQU/360fx360f">
+        <div class="charm-name">Крошка Пистон</div>
+        <div class="charm-price">₴10.07</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSW0nRV-uj6J6cWF5LMhRZia-2Ozh50uHGP2sV6dm1zILcwPatZr2Hkz1VvpNwiL2W9o2sjg3n-RY4Y2ulLIOcIA8gIQaHL6W44wM/360fx360f">
+        <div class="charm-name">Шерстолет</div>
+        <div class="charm-price">₴10.90</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSW0nRV-uj6J6cWF5LMhRZibuyOzhw3_LbZTRBotrjkIKOwKD3NurXwWoJuJJy2LGZ84j3jA3i-BBvajihJ4CQdgQ-NVDOug_pRs5oC0Y/360fx360f">
+        <div class="charm-name">Карманная АВП</div>
+        <div class="charm-price">₴19.18</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSQUXDVO2j0MPaXVY7Lgdou7O2OA5u1P_BfzZ97cq32obZkqbxa-3UxzII7sYg0-uY942n3wXlrRA5YDvyLYGWcgc9Zg6Br1WggbC4N7FJJLQ/360fx360f">
+        <div class="charm-name">Крошка Ава</div>
+        <div class="charm-price">₴19.47</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSQUXDVO2j0MPaXVY7Lgdou7O2OA5u1P_BfzZ968mzhomHm_a6a7jXlWkHv5ch3OqTp9vz2A3i-hFlZjyndY6UJgRoZVGFrAK2xue90Ij84som2UC0KQ/360fx360f">
+        <div class="charm-name">Крошка Крэсс</div>
+        <div class="charm-price">₴22.42</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSQUXDVO2j0MPaXVY7Lgdou7O2OA5u1P_BfzZ959mg2oLdw_KmN-3VzzkJ68Ah2O-Y8dz3ilXg-ERvazz3JYSWJlVsYAzTrlCggbC4HTVolNk/360fx360f">
+        <div class="charm-name">Резной резачок</div>
+        <div class="charm-price">₴23.29</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSQUXDVO2j0MPaXVY7Lgdou7O2OA5u1P_BfzZ959mg2oLdw_KmN-3VzzkJ68Ah2O-Y8dz3ilXg-ERvazz3JYSWJlVsYAzTrlCggbC4HTVolNk/360fx360f">
+        <div class="charm-name">Здоровяк Кев</div>
+        <div class="charm-price">25.92</div>
+      </div>
+
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSQUXDVO2j0MPaXVY7Lgdou7O2OA5u1P_BfzZ9_927q4OKg_T8JqufxG4JsZEijryQo9uj2gbh_kc9YmzwIY-We1U6NFiC-1S4wu7mg8C9vYOJlyXb9EAkEg/360fx360f">
+        <div class="charm-name">Острый соус</div>
+        <div class="charm-price">₴27.23</div>
+      </div>
+	  
+ <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSW0nRV-uj6J6cWF5LMhRZibekKFYw7OfBfTgMtdq1kYKIxaGjN-PTxWkF7ZB13L6Z9t-tjgPh8hc6MW36J9TGIwI5ZEaQpAYS66Di9g/360fx360f">
+        <div class="charm-name">Кафель</div>
+        <div class="charm-price">₴9.23</div>
+      </div>
+	  
+      <div class="charm">
+        <img src="https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXI5BVcJos7pwgSW0nRV-uj6J6cWF5LMhRZibuuFAVhwPaGImwR6tiwwNDcz_akYr_VlzsAscF12uiTodij2w2x80Y4Y2vxdoDAdhh-Pw_srEH5mQ/360fx360f" alt="Baby's AK">
+        <div class="charm-name">Baby's AK</div>
+        <div class="charm-price">₴25.88</div>
+      </div>
+    </div>
+
+    <!-- Основная панель калькуляторов -->
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      <h1 style="color: #66c0f4; font-size: 32px; text-align: center; margin-bottom: 10px;">
+        Калькулятор комиссии Steam
+      </h1>
+
+      <div class="top-row">
+        {% for calc_num in [1, 2] %}
+          <div class="calculator">
+            <form method="post">
+              <input type="text" name="values{{ calc_num }}" placeholder="Введите сумму" required>
+              <input type="hidden" name="calc_id" value="{{ calc_num }}">
+              <button type="submit">Рассчитать</button>
+            </form>
+
+            <div class="results">
+              Итоговая сумма: <strong>
+                {% if calc_totals[calc_num] %}
+                  {{ calc_totals[calc_num][0] }} ₴ ({{ "%.2f" % calc_totals[calc_num][1] }} $)
+                {% else %}
+                  — ₴ (— $)
+                {% endif %}
+              </strong>
+            </div>
+
+            {% if histories[calc_num] %}
+              <div class="history">
+                <div class="history-title">История:</div>
+                {% for item in histories[calc_num] %}
+                  <p>{{ item }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="bottom-row">
+        {% set calc_num = 3 %}
+        <div class="calculator">
+          <form method="post">
+            <input type="text" name="values{{ calc_num }}" value="{{ calc3_input_string }}" required>
+            <input type="hidden" name="calc_id" value="{{ calc_num }}">
+            <button type="submit">Сумма</button>
+          </form>
+
+          <div class="results">
+            Итоговая сумма: <strong>
+              {% if calc_totals[calc_num] %}
+                {{ calc_totals[calc_num][0] }} ₴ ({{ "%.2f" % calc_totals[calc_num][1] }} $)
+              {% else %}
+                — ₴ (— $)
+              {% endif %}
+            </strong>
+          </div>
+
+          {% if histories[calc_num] %}
+            <div class="history">
+              <div class="history-title">История:</div>
+              {% for item in histories[calc_num] %}
+                <p>{{ item }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
